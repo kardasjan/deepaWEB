@@ -1,0 +1,115 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [ "error", 2 ],
+    "quotes": [ "error", "single" ],
+    "semi": [ "error", "always" ],
+    "max-params": [2,4],
+    "max-depth": [2,3],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "max-len": ["error",150],
+    "max-nested-callbacks": ["error", 5],
+    "max-statements": [2,15],
+    "max-lines": ["error", {"max": 300, "skipComments": true}],
+    "no-redeclare": 2,
+    "no-console": 2,
+    "no-empty":2,
+    "consistent-return": 0,
+    "eqeqeq": 2,
+    "dot-notation":2,
+    "accessor-pairs": [2,{"getWithoutSet":true}],
+    "block-scoped-var": 2,
+    "default-case": 2,
+    "dot-location": [2,"property"],
+    "no-fallthrough": 2,
+    "no-octal": 2,
+    "yoda": 2,
+    "no-new-require": 2,
+     "flowtype/boolean-style": [
+      2,
+      "boolean"
+    ],
+    "flowtype/define-flow-type": 1,
+    "flowtype/delimiter-dangle": [
+      2,
+      "never"
+    ],
+    "flowtype/generic-spacing": [
+      2,
+      "never"
+    ],
+    "flowtype/no-primitive-constructor-types": 2,
+    "flowtype/no-weak-types": [
+      2, {
+        "any": true,
+        "Object": false,
+        "Function": false
+      }
+    ],
+    "flowtype/object-type-delimiter": [
+      2,
+      "comma"
+    ],
+    "flowtype/require-parameter-type": 2,
+    "flowtype/require-return-type": [
+      2,
+      "always",
+      {
+        "annotateUndefined": "never"
+      }
+    ],
+    "flowtype/require-valid-file-annotation": 2,
+    "flowtype/semi": [
+      2,
+      "always"
+    ],
+    "flowtype/space-after-type-colon": [
+      2,
+      "always"
+    ],
+    "flowtype/space-before-generic-bracket": [
+      2,
+      "never"
+    ],
+    "flowtype/space-before-type-colon": [
+      2,
+      "never"
+    ],
+    "flowtype/type-id-match": [
+      2,
+      "^([A-Z][a-z0-9]+)+Type$"
+    ],
+    "flowtype/union-intersection-spacing": [
+      2,
+      "always"
+    ],
+    "flowtype/use-flow-type": 1,
+    "flowtype/valid-syntax": 1
+  },
+  "globals": {
+    "process": true,
+    "global": true,
+    "__dirname": true,
+    "describe": true
+  },
+  "plugins": [
+    "flowtype"
+  ],
+  "extends": [
+    "plugin:flowtype/recommended",
+    "eslint:recommended"
+  ],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": false
+    }
+  }
+}
