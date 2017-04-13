@@ -31,7 +31,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val: number): number | boolean {
+function normalizePort(val: number | string | boolean): number | string | boolean {
   var port = parseInt(val, 10);
   if (isNaN(port))
     return val;
@@ -84,7 +84,7 @@ function onListening() {
 /**
  * Handle exception in promises and so on
  */
-process.on('unhandledRejection', function(reason, p) {
+process.on('unhandledRejection', function(reason: Error, p: Promise) {
   console.log('Unhandled Rejection at: Promise '.red.bold);
   console.log(p);
   console.log('\n');
@@ -92,6 +92,7 @@ process.on('unhandledRejection', function(reason, p) {
   console.log('End of unhandled Rejection at: Promise '.red.bold);
 });
 
+console.log('Port: ', port);
 console.log(colors.random('--------APP IS READY--------'));
 
 /* eslint-enable */

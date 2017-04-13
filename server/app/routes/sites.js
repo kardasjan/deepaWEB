@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { authApp } from '../middleware/auth';
-import { getValidation, getAll, getSite } from '../middleware/sites';
+import { getValidation, getAll, getSite, newValidation, newSite } from '../middleware/sites';
 
 const router = express.Router();
 
@@ -17,8 +17,7 @@ const ROUTE_SITE = '/site';
  * @apiVersion 0.0.0
  *
  * @apiHeader (Header) {String} authorization Auth token
- *
- * @apiParam (POST PARAM - JSON) {Object} filter Parameters for Mongoose query
+ * @apiHeader (Header) {Object} filter Parameters for Mongoose query
  *
  */
 router.get(ROUTE_INDEX, authApp, [getValidation, getAll]);
@@ -49,7 +48,7 @@ router.get(ROUTE_SITE, authApp, [getValidation, getSite]);
  * @apiParam (POST PARAM - JSON) {Object} site Site values
  *
  */
-router.post(ROUTE_SITE, authApp, []);
+router.post(ROUTE_SITE, authApp, [newValidation, newSite]);
 
 /**
  * @api {delete} /sites/site Delete site

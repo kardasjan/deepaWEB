@@ -1,3 +1,6 @@
+import { dbToApiErrors } from '../ErrorService/mongoose';
+import { joiToApiErrors } from '../ErrorService/joi';
+
 /**
  * The reason for existence of this code is structure, every
  * API Response should have data and errors property
@@ -33,4 +36,14 @@ export default class ApiService {
   static sendFailed( status: number, errors: Array<string> = [], data: Object = {}, res: Object ): Object {
     return this.send(this.create(status, errors, data), res);
   } 
+
+  static mongooseValidation(err: Error, res: Object): Object {
+    const errors = dbToApiErrors(err);
+    return this.send(this.create(400, errors, {}), res);
+  }
+
+  static joiValidation(error: Object, res: Object): Object {
+    const errors = joiToApiErrors(error);
+    return this.send(this.create(400, errors, {}), res);
+  }
 }
