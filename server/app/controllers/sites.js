@@ -1,8 +1,7 @@
 import Site from '../model/site';
-
 import { SiteNotFoundError, SitesNotFoundError } from '../services/ErrorService/sites';
 
-async function getAll(filter: string): Promise {
+async function getAll (filter: string): Promise {
   filter = JSON.parse(filter);
   return await Site.find(filter).exec()
     .then( (sites: Site[]): Site[] => {
@@ -13,7 +12,7 @@ async function getAll(filter: string): Promise {
     });
 }
 
-async function getOne(filter: Object): Promise {
+async function getOne (filter: Object): Promise {
   return await Site.findOne(filter).exec()
     .then( (site: Site): Site => {
       if (site === null) {
@@ -23,12 +22,12 @@ async function getOne(filter: Object): Promise {
     });
 }
 
-async function addSite(site: Object): Promise {
+async function addSite (site: Object): Promise {
   return await new Site(site).save();
 }
 
-export {
+export default {
   getAll,
   getOne,
-  addSite,
+  addSite
 };

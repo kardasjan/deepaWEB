@@ -15,7 +15,6 @@
     "max-params": [2,4],
     "max-depth": [2,3],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "max-len": ["error",150],
     "max-nested-callbacks": ["error", 5],
     "max-statements": [2,15],
     "max-lines": ["error", {"max": 300, "skipComments": true}],
@@ -37,6 +36,40 @@
       2,
       "boolean"
     ],
+    "generator-star-spacing": [
+      2, {
+        "before": true,
+        "after": true
+      }
+    ],
+    "no-shadow": 0,
+    "require-yield": 0,
+    "no-param-reassign": 0,
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "no-underscore-dangle": 0,
+    "import/no-extraneous-dependencies": [
+      2, {
+        "devDependencies": true
+      }
+    ],
+    "import/order": [
+      "error"
+    ],
+    "func-names": 0,
+    "no-unused-expressions": 0,
+    "prefer-arrow-callback": 1,
+    "no-use-before-define": [
+      2, {
+        "functions": false
+      }
+    ],
+    "space-before-function-paren": [ 2, "always" ],
+    "max-len": [2, 120, 2],
+    "strict":  [2, "global"],
+    "arrow-parens": [2, "always"],
     "flowtype/define-flow-type": 1,
     "flowtype/delimiter-dangle": [
       2,
@@ -104,6 +137,7 @@
     "flowtype"
   ],
   "extends": [
+    "airbnb",
     "plugin:flowtype/recommended",
     "eslint:recommended"
   ],

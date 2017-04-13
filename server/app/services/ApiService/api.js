@@ -1,5 +1,5 @@
-import { dbToApiErrors } from '../ErrorService/mongoose';
-import { joiToApiErrors } from '../ErrorService/joi';
+import dbToApiErrors from '../ErrorService/mongoose';
+import joiToApiErrors from '../ErrorService/joi';
 
 /**
  * The reason for existence of this code is structure, every
@@ -15,34 +15,34 @@ export default class ApiService {
    * @param data
    * @returns {{httpCode: *, status: *, errors: *, data: *}}
    */
-  static create( status: number, errors: Array<string> | boolean, data: Object ): Object {
+  static create ( status: number, errors: Array<string> | boolean, data: Object ): Object {
     return {
       status,
       body: {
         errors,
-        data,
+        data
       }
     };
   }
 
-  static send(msg: Object, res: Object): Object {
+  static send (msg: Object, res: Object): Object {
     return res.status(msg.status).json(msg.body);
   }
 
-  static sendSuccess( data: Object, res: Object ): Object {
+  static sendSuccess ( data: Object, res: Object ): Object {
     return this.send(this.create(200, false, data), res);
   }
 
-  static sendFailed( status: number, errors: Array<string> = [], data: Object = {}, res: Object ): Object {
+  static sendFailed ( status: number, errors: Array<string> = [], data: Object = {}, res: Object ): Object {
     return this.send(this.create(status, errors, data), res);
   } 
 
-  static mongooseValidation(err: Error, res: Object): Object {
+  static mongooseValidation (err: Error, res: Object): Object {
     const errors = dbToApiErrors(err);
     return this.send(this.create(400, errors, {}), res);
   }
 
-  static joiValidation(error: Object, res: Object): Object {
+  static joiValidation (error: Object, res: Object): Object {
     const errors = joiToApiErrors(error);
     return this.send(this.create(400, errors, {}), res);
   }

@@ -2,7 +2,7 @@
  * Convert Joi error object into API Format
  * @param {*} errors 
  */
-function joiToApiErrors(errors: Object): Array<string> {
+export default function joiToApiErrors (errors: Object): Array<string> {
   let result = new Array();
   result.push('Joi Validation Error');
   errors.details.map((item: Object) => {
@@ -10,7 +10,3 @@ function joiToApiErrors(errors: Object): Array<string> {
   });
   return result;
 }
-
-export {
-  joiToApiErrors,
-};

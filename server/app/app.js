@@ -1,14 +1,15 @@
-import express from 'express';
+// Import dependencies
 import path from 'path';
+import express from 'express';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-
+// Import routes
 import index from './routes/index';
 import sites from './routes/sites';
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

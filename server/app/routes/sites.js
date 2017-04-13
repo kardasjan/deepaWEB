@@ -1,5 +1,4 @@
 import express from 'express';
-
 import { authApp } from '../middleware/auth';
 import { getValidation, getAll, getSite, newValidation, newSite } from '../middleware/sites';
 
@@ -30,8 +29,7 @@ router.get(ROUTE_INDEX, authApp, [getValidation, getAll]);
  * @apiVersion 0.0.0
  *
  * @apiHeader (Header) {String} authorization Auth token
- *
- * @apiParam (POST PARAM - JSON) {Object} filter Parameters for Mongoose query
+ * @apiHeader (Header) {Object} filter Parameters for Mongoose query
  *
  */
 router.get(ROUTE_SITE, authApp, [getValidation, getSite]);

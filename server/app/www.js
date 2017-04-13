@@ -1,6 +1,8 @@
-import app from './app';
+// Import dependencies
 import http from 'http';
 import colors from 'colors';
+// Import application
+import app from './app';
 
 var debug = require('debug')('deepa:server');
 
@@ -31,7 +33,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val: number | string | boolean): number | string | boolean {
+function normalizePort (val: number | string | boolean): number | string | boolean {
   var port = parseInt(val, 10);
   if (isNaN(port))
     return val;
@@ -44,7 +46,7 @@ function normalizePort(val: number | string | boolean): number | string | boolea
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error: Object) {
+function onError (error: Object) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -72,7 +74,7 @@ function onError(error: Object) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
+function onListening () {
   var addr = server.address();
   var bind = typeof addr === 'string'
         ? 'pipe ' + addr
@@ -84,7 +86,7 @@ function onListening() {
 /**
  * Handle exception in promises and so on
  */
-process.on('unhandledRejection', function(reason: Error, p: Promise) {
+process.on('unhandledRejection', (reason: Error, p: Promise) => {
   console.log('Unhandled Rejection at: Promise '.red.bold);
   console.log(p);
   console.log('\n');
