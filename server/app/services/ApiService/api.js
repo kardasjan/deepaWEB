@@ -37,12 +37,12 @@ export default class ApiService {
     return this.send(this.create(status, errors, data), res);
   } 
 
-  static mongooseValidation (err: Error, res: Object): Object {
+  static badMongooseValidationResponse (err: Error, res: Object): Object {
     const errors = dbToApiErrors(err);
     return this.send(this.create(400, errors, {}), res);
   }
 
-  static joiValidation (error: Object, res: Object): Object {
+  static badJoiValidationResponse (error: Object, res: Object): Object {
     const errors = joiToApiErrors(error);
     return this.send(this.create(400, errors, {}), res);
   }

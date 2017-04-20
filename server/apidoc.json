@@ -1,0 +1,18 @@
+{
+  "_HOW_TO_RUN": "apidoc -i routes -o public/doc/",
+  "name": "Qest Boilerplate",
+  "version": "0.0.1",
+  "description": "Qest default App",
+  "title": "QEST",
+  "url" : "http://localhost:3015",
+  "sampleUrl": "http://localhost:3015",
+  "header": {
+    "title": "Qest API - seznam metod"
+  },
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "input": "routes",
+  "output": "./doc"
+}

@@ -1,15 +1,17 @@
 // Import dependencies
 import http from 'http';
 import colors from 'colors';
+import dbg from 'debug';
 // Import application
 import app from './app';
+import config from './config';
 
-var debug = require('debug')('deepa:server');
+let debug = dbg('deepa:server');
 
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '3015');
+var port = normalizePort(process.env.PORT || config.PROJECT_PORT);
 app.set('port', port);
 
 /**

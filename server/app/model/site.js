@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import connection from '../connection';
-import {COLLECTION as COLLECTION_CONTACT} from './contact';
+import {COLLECTION as COLLECTION_USERS} from './user';
 
 const Schema = mongoose.Schema;
 export const COLLECTION = 'Sites';
 
-var siteSchema = new Schema({
+const schema = new Schema({
   name: {
     type: String,
     required: true
@@ -14,10 +14,21 @@ var siteSchema = new Schema({
     type: String,
     required: true
   },
-  contacts: [{
-    ref: COLLECTION_CONTACT,
+  created_by: [{
+    ref: COLLECTION_USERS,
     type: Schema.Types.ObjectId
-  }]
+  }],
+  created_at: Date,
+  updated_at: Date
 });
 
-export default connection.model(COLLECTION, siteSchema);
+schema.pre('save', function (next: Function){
+  const now = new Date();
+  this.updated_at = now;
+  if ( !this.created_at ) {
+    this.created_at = now;
+  }
+  next();
+});
+
+export default connection.model(COLLECTION, schema);
